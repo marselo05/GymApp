@@ -9,8 +9,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 const Stack = createNativeStackNavigator()
 
-const ShopNavigator = () => (
-    <NavigationContainer>
+const ShopNavigator = () => {
+    return (
         <Stack.Navigator 
             initialRouteName="Home"
             screenOptions={{
@@ -41,8 +41,8 @@ const ShopNavigator = () => (
                 }
             />
         </Stack.Navigator>
-    </NavigationContainer>
 )
+}
 
 const styles = StyleSheet.create({
     header: {
