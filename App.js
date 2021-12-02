@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
-
 import AppLoading from 'expo-app-loading';
 import MainNavigation from './navigation/index'
-import {
-    StyleSheet,
-} from 'react-native';
+import { Provider } from 'react-redux';
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import store from './store';
 import {useFonts} from 'expo-font'
 
 export default function App() {
@@ -16,9 +15,11 @@ export default function App() {
     })
 
     if(!loaded) return <AppLoading />
-
+    
     return (
-        <MainNavigation />
+        <Provider store={store}>
+            <MainNavigation />
+        </Provider>    
     )
 }
 

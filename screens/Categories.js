@@ -1,20 +1,25 @@
-import {
-    Button,
-    FlatList,
-    SafeAreaView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View
-} from 'react-native'
+import { FlatList, SafeAreaView, StyleSheet } from 'react-native'
+import React, { useEffect } from 'react'
+import { filterProduct, selectProduct } from '../store/actions/product.actions'
+import { useDispatch, useSelector } from 'react-redux'
 
-import {CATEGORIAS} from '../data/categories'
 import GridItem from '../components/GridItem'
-import React from 'react'
+import { selectCategory } from '../store/actions/category.actions'
 
 const Categories = ({navigation}) => {
 
+    const dispatch = useDispatch()
+    const categoryProducts = useSelector( state => state.products.filterProduct )
+    const categorias = useSelector( state => state.categories.categories )
+
+    console.log(categoryProducts)
+
+    useEffect( () => {
+        dispatch( filterProduct( categorias.id ) )
+    },[] )
+
     const handleSelectedCategory = (item) => {
+        dispatch( selectCategory(item.id) )
         navigation.navigate('Products', {
             categoryId: item.id,
             name: item.title,
@@ -31,7 +36,7 @@ const Categories = ({navigation}) => {
     return(
         <SafeAreaView style={styles.container}>
             <FlatList
-                data={CATEGORIAS}
+                data={categorias}
                 keyExtractor={ item => item.id }
                 renderItem={ renderGridItem }
             />
