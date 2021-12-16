@@ -41,7 +41,7 @@ const ShopNavigator = () => {
                 }
             />
         </Stack.Navigator>
-)
+    )
 }
 
 const styles = StyleSheet.create({

@@ -1,0 +1,1 @@
+export const API_URL = 'https://gymapp-c8d44-default-rtdb.firebaseio.com/'
